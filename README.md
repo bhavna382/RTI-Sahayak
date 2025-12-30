@@ -29,17 +29,18 @@ Plus, there's an AI chatbot that answers any questions about RTI along the way!
 *Caption: Clean landing page with semantic search*
 
 ![Semantic Search results](screenshots/search-results.png)
-*Caption: AI matches your query to relevant RTI templates*
+* AI matches your query to relevant RTI templates*
 
 ![Guided form filling](screenshots/form-filling.png)
+
 ![Guided form filling](screenshots/assist-bot.png)
-*Caption: Guided form with real-time validation and AI help*
+* Guided form with real-time validation and AI help*
 
 ![Editable Preview](screenshots/editable-preview.png)
-*Caption: Editable preview before downloading final PDF*
+* Editable preview before downloading final PDF*
 
 ![ RTI Knowledge Assistant](screenshots/knowledge-bot.png)
-*Caption: Contextual help available throughout the process*
+* Contextual help available throughout the process*
 
 ---
 
