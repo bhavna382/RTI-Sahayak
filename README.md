@@ -114,7 +114,3 @@ User Query
 RTI Sahayak was developed as part of my internship and turned into something I'm genuinely proud of. It's not perfect, there's no backend, no auth, no mobile app but it works and it helps people. It also helped me learn how to design end-to-end solutions and apply machine learning in a practical, problem-driven way.
 
 The most rewarding moment was when a friend used it to file their first RTI about a pending ration card. They said, "I always thought RTI was for activists. This made it feel accessible."
-
----
-
-*This project is open-source and available on GitHub. Contributions welcome!*
