@@ -1,0 +1,67 @@
+{
+  "template_id": "MH_SCHOLARSHIP_DELAY",
+  "state": "Maharashtra",
+  "category": "Scholarship / Education",
+  "title": "RTI for Scholarship Delay",
+  "description": "RTI application to seek information regarding delayed or pending scholarship applications in Maharashtra.",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "application_id": "Scholarship Application ID / Reference Number",
+    "student_registration_id": "Student Registration / Enrollment ID",
+    "application_date": "Date of Scholarship Application Submission",
+    "college_name": "Name of College / Institute",
+    "course_name": "Course / Program Name",
+    "year_semester": "Academic Year / Semester",
+    "district": "District of College / Institute",
+    "state": "State",
+    "representation_date": "Date of Follow-up / Representation (if any)"
+  },
+
+  "search_tags": [
+    "scholarship",
+    "scholarship delay",
+    "education department",
+    "student scholarship",
+    "fees reimbursement"
+  ],
+
+  "departments": [
+    "Education Department",
+    "Social Justice Department",
+    "Tribal Development Department"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "application_id",
+      "student_registration_id",
+      "application_date",
+      "college_name",
+      "course_name",
+      "year_semester",
+      "district",
+      "state",
+      "representation_date"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

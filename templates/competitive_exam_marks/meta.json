@@ -1,0 +1,64 @@
+{
+  "template_id": "MH_EXAM_RECRUITMENT",
+  "state": "Maharashtra",
+  "category": "Examination / Recruitment",
+  "title": "RTI for Exam Results / Answer Sheet",
+  "description": "RTI application to seek evaluated answer sheets, marks, cut-off details, and selection statistics for recruitment or competitive examinations in Maharashtra.",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "employment_notice_number": "Employment / Exam Notification Number",
+    "category_number": "Post / Category Number",
+    "post_name": "Name of Post / Position Applied For",
+    "exam_date": "Date of Examination",
+    "exam_centre_name": "Examination Center Name / Location",
+    "roll_number": "Examination Roll Number / Registration Number"
+  },
+
+  "search_tags": [
+    "exam",
+    "recruitment",
+    "answer sheet",
+    "exam result",
+    "cut off marks",
+    "government exam",
+    "selection list"
+  ],
+
+  "departments": [
+    "Recruitment Board",
+    "Examination Cell",
+    "Staff Selection Authority",
+    "Public Service Commission"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "employment_notice_number",
+      "category_number",
+      "post_name",
+      "exam_date",
+      "exam_centre_name",
+      "roll_number"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

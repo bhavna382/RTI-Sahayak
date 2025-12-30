@@ -1,0 +1,426 @@
+
+{
+  "applicant_full_name": {
+    "label": "Full Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Full name of the RTI applicant (used in templates where explicitly named)"
+  },
+
+  "applicant_address": {
+    "label": "Address",
+    "type": "textarea",
+    "source": "user",
+    "required": true,
+    "description": "Residential address of the applicant"
+  }, 
+
+  "applicant_pin_code": {
+    "label": "PIN Code",
+    "type": "number",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "pattern": "^[0-9]+$",
+      "message": "PIN code must contain only numbers"
+    },
+    "description": "PIN code of the applicant's address"
+  },
+
+  "public_authority_name": {
+    "label": "Public Authority Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the concerned public authority"
+  },
+
+  "public_authority_address": {
+    "label": "Public Authority Address",
+    "type": "textarea",
+    "source": "user",
+    "required": true,
+    "description": "Full address of the public authority"
+  },
+
+  "public_authority_address_pin_code": {
+    "label": "Public Authority PIN Code",
+    "type": "number",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "pattern": "^[0-9]+$",
+      "message": "PIN code must contain only numbers"
+    },
+    "description": "PIN code of the public authority address"
+  },
+
+  "pin_code": {
+    "label": "PIN Code",
+    "type": "number",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "pattern": "^[0-9]+$",
+      "message": "PIN code must contain only numbers"
+    },
+    "description": "PIN code used in templates that do not distinguish applicant vs authority"
+  },
+
+  "fee_mode": {
+    "label": "RTI Fee Payment Mode",
+    "type": "select",
+    "source": "user",
+    "required": true,
+    "options": [ "Online", "Cash", "Demand Draft"],
+    "description": "Mode of payment of RTI application fee"
+  },
+
+  "fee_details": {
+    "label": "RTI Fee Payment Details",
+    "type": "text",
+    "source": "user",
+    "required": false,
+    "conditional": {
+      "show_if": "fee_mode",
+      "equals": "Online",
+      "then_required": true
+    },
+    "validation": {
+      "min": 0,
+      "max": 100,
+      "message": "Payment details should be between 0 and 100 characters"
+    },
+    "description": "Transaction ID or other fee payment reference"
+  },
+
+  "submission_date": {
+    "label": "RTI Submission Date",
+    "type": "date",
+    "source": "system",
+    "required": true,
+    "description": "Date on which the RTI application is generated/submitted"
+  },
+
+  "application_date": {
+    "label": "Application Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date on which the original application was submitted"
+  },
+
+  "application_date_full": {
+    "label": "RTI Application Date",
+    "type": "date",
+    "source": "system",
+    "required": true,
+    "description": "Date shown at the end of the RTI application"
+  },
+
+  "submission_month": {
+    "label": "Submission Month",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Month in which documents or applications were submitted"
+  },
+
+  "designation": {
+    "label": "Designation",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Designation of the applicant at the time of service"
+  },
+
+  "staff_number": {
+    "label": "Staff / PF Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 3,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Staff number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Staff number or Provident Fund number"
+  },
+
+  "date_of_superannuation": {
+    "label": "Date of Superannuation",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date of retirement of the applicant"
+  },
+
+  "retirement_unit": {
+    "label": "Retirement Unit / Office",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 0,
+      "max": 200,
+      "message": "Retirement unit should be between 3 and 200 characters"
+    },
+    "description": "Office or unit from which the applicant retired"
+  },
+
+  "submission_office": {
+    "label": "Office of Submission",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Office where the application or documents were submitted"
+  },
+
+  "application_id": {
+    "label": "Application ID",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 3,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Application ID should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Unique application ID for the scheme or service"
+  },
+
+  "student_registration_id": {
+    "label": "Student Registration ID",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 3,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Registration ID should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Student registration number"
+  },
+
+  "college_name": {
+    "label": "College Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the educational institution"
+  },
+
+  "course_name": {
+    "label": "Course Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the academic course"
+  },
+
+  "year_semester": {
+    "label": "Year / Semester",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Academic year and semester"
+  },
+
+  "district": {
+    "label": "District",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "District name"
+  },
+
+  "state": {
+    "label": "State",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "State name"
+  },
+
+  "representation_date": {
+    "label": "Representation Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date of representation submitted by the applicant"
+  },
+
+  "family_head_name": {
+    "label": "Head of Family Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the head of the family"
+  },
+
+  "passport_application_number": {
+    "label": "Passport Application Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 5,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Application number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Passport application reference number"
+  },
+
+  "passport_office_name": {
+    "label": "Regional Passport Office",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the Regional Passport Office"
+  },
+
+  "verification_completion_date": {
+    "label": "Document Verification Completion Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date on which document verification was completed"
+  },
+
+  "application_submission_date": {
+    "label": "Passport Application Submission Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date on which passport application was submitted"
+  },
+
+  "building_name": {
+    "label": "Building Name",
+    "type": "text",
+    "source": "user",
+    "required": false,
+    "description": "Name of the building"
+  },
+
+  "plot_number": {
+    "label": "Plot Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9 ./-]+$",
+      "message": "Plot number should contain only letters, numbers, spaces, periods, hyphens, and slashes"
+    },
+    "description": "Plot number of the property"
+  },
+
+  "city_survey_number": {
+    "label": "City Survey Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9 ./-]+$",
+      "message": "Survey number should contain only letters, numbers, spaces, periods, hyphens, and slashes"
+    },
+    "description": "City survey number of the property"
+  },
+
+  "ward_number": {
+    "label": "Ward Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9 ./-]+$",
+      "message": "Ward number should contain only letters, numbers, spaces, periods, hyphens, and slashes"
+    },
+    "description": "Municipal ward number"
+  },
+
+  "street_details": {
+    "label": "Street Name / Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Street name or number"
+  },
+
+  "landlord_name": {
+    "label": "Landlord / Owner Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the property owner"
+  },
+
+  "employment_notice_number": {
+    "label": "Employment Notice Number and Date",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Employment notice reference number and date"
+  },
+
+  "category_number": {
+    "label": "Category Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Category number for recruitment"
+  },
+
+  "post_name": {
+    "label": "Post Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the post applied for"
+  },
+
+  "exam_date": {
+    "label": "Examination Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "max_date": "today",
+      "message": "Examination date cannot be in the future"
+    },
+    "description": "Date of examination"
+  },
+
+  "exam_centre_name": {
+    "label": "Examination Centre",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the examination centre"
+  },
+
+  "roll_number": {
+    "label": "Roll Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 3,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Roll number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Roll number of the candidate"
+  }
+}

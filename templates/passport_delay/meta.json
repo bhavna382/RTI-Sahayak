@@ -1,0 +1,58 @@
+{
+  "template_id": "MH_PASSPORT_DELAY",
+  "state": "Maharashtra",
+  "category": "Passport / Police Verification",
+  "title": "RTI for Passport Police Verification Delay",
+  "description": "RTI application to seek information regarding delay in police verification of passport applications in Maharashtra.",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "passport_application_number": "Passport Application / File Number",
+    "passport_office_name": "Regional Passport Office Name",
+    "verification_completion_date": "Date Police Verification Should Have Completed (Expected)",
+    "application_submission_date": "Date of Passport Application Submission"
+  },
+
+  "search_tags": [
+    "passport",
+    "passport delay",
+    "police verification",
+    "passport application",
+    "regional passport office"
+  ],
+
+  "departments": [
+    "Police Department",
+    "Special Branch",
+    "Passport Branch",
+    "Regional Passport Office"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "passport_application_number",
+      "passport_office_name",
+      "verification_completion_date",
+      "application_submission_date"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

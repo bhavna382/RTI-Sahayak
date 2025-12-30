@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environment
+venv/
+.env/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Documentation 
+ADDING_TEMPLATES.md
+PROJECT_DOCUMENTATION.md
+
+# Generated files
+template_embeddings.json
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db

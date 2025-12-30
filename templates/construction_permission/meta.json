@@ -1,0 +1,64 @@
+{
+  "template_id": "MH_CONSTRUCTION_PERMISSION",
+  "state": "Maharashtra",
+  "category": "Construction / Town Planning",
+  "title": "RTI for Construction Permission / Illegal Construction",
+  "description": "RTI application to seek information regarding sanctioned building plans, construction permissions, and potential unauthorized construction in Maharashtra.",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "building_name": "Name of Building / Structure (if any)",
+    "plot_number": "Plot / Gat Number",
+    "city_survey_number": "City Survey (C.S.) Number / Village Survey Number",
+    "ward_number": "Ward Number / Zone",
+    "street_details": "Street / Road Name and Area Details",
+    "landlord_name": "Name of Property Owner / Landlord"
+  },
+
+  "search_tags": [
+    "construction",
+    "building permission",
+    "illegal construction",
+    "fsi",
+    "building plan",
+    "town planning",
+    "municipal corporation"
+  ],
+
+  "departments": [
+    "Town Planning Department",
+    "Municipal Corporation",
+    "Urban Development Department",
+    "Building Permission Department"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "building_name",
+      "plot_number",
+      "city_survey_number",
+      "ward_number",
+      "street_details",
+      "landlord_name"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "template_id": "MH_RATION_CARD_DELAY",
+  "state": "Maharashtra",
+  "category": "Ration Card / Civil Supplies",
+  "title": "RTI for Ration Card Delay (Life or Liberty)",
+  "description": "RTI application to seek urgent information regarding delayed ration card issuance under the life or liberty proviso in Maharashtra.",
+
+  "priority": "life_or_liberty",
+
+  "field_labels": {
+    "application_id": "Ration Card Application ID / Receipt Number",
+    "application_date": "Date of Ration Card Application Submission",
+    "submission_office": "Office Where Ration Card Application Was Submitted"
+  },
+
+  "search_tags": [
+    "ration card",
+    "ration card delay",
+    "civil supplies",
+    "public distribution system",
+    "life or liberty",
+    "fair price shop"
+  ],
+
+  "departments": [
+    "Food and Civil Supplies Department",
+    "District Civil Supply Office"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code",
+      "family_head_name"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "application_id",
+      "application_date",
+      "submission_office"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

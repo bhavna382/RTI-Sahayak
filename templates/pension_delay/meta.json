@@ -1,0 +1,62 @@
+{
+  "template_id": "MH_PENSION_DELAY",
+  "state": "Maharashtra",
+  "category": "Pension / Retirement",
+  "title": "RTI for Pension Delay",
+  "description": "RTI application to seek information regarding delay in sanction and disbursement of pension after superannuation in Maharashtra.",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "submission_month": "Month of Pension Papers Submission",
+    "application_date": "Date of Pension Application / Papers Submission",
+    "date_of_superannuation": "Date of Retirement / Superannuation"
+  },
+
+  "search_tags": [
+    "pension",
+    "pension delay",
+    "retirement",
+    "superannuation",
+    "ppo",
+    "gratuity",
+    "pension sanction"
+  ],
+
+  "departments": [
+    "Finance Department",
+    "Accounts Department",
+    "Personnel Department",
+    "Pension Sanctioning Authority"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "designation",
+      "staff_number",
+      "date_of_superannuation",
+      "retirement_unit"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code",
+      "submission_office"
+    ],
+    "case_specific": [
+      "submission_month",
+      "application_date",
+      "date_of_superannuation"
+    ],
+    "payment": [
+      "fee_mode",
+      "fee_details"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}
