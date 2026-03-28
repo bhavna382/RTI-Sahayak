@@ -1,6 +1,5 @@
 import json
 import numpy as np
-import os
 from pathlib import Path
 from sklearn.metrics.pairwise import cosine_similarity
 from google.genai import types
@@ -10,9 +9,49 @@ from gemini_client import client
 CURRENT_DIR = Path(__file__).parent
 EMBEDDINGS_PATH = CURRENT_DIR.parent / "template_embeddings.json"
 
-# Load stored embeddings
-with open(EMBEDDINGS_PATH, "r") as f:
-    TEMPLATE_EMBEDDINGS = json.load(f)
+def _generate_template_embeddings(output_path: Path):
+    """Generate embeddings from template metadata when cache file is missing."""
+    templates_dir = CURRENT_DIR.parent / "templates"
+    template_embeddings = []
+
+    for template_folder in sorted(templates_dir.iterdir()):
+        if not template_folder.is_dir():
+            continue
+
+        meta_file = template_folder / "meta.json"
+        if not meta_file.exists():
+            continue
+
+        with open(meta_file, "r", encoding="utf-8") as f:
+            tpl = json.load(f)
+
+        response = client.models.embed_content(
+            model="gemini-embedding-001",
+            contents=tpl["description"],
+            config=types.EmbedContentConfig(
+                task_type="SEMANTIC_SIMILARITY"
+            )
+        )
+
+        template_embeddings.append({
+            "template_id": tpl["template_id"],
+            "title": tpl["title"],
+            "embedding": response.embeddings[0].values
+        })
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(template_embeddings, f)
+
+
+def _load_template_embeddings(path: Path):
+    if not path.exists():
+        _generate_template_embeddings(path)
+
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+TEMPLATE_EMBEDDINGS = _load_template_embeddings(EMBEDDINGS_PATH)
 
 def embed_query(query: str):
     response = client.models.embed_content(
