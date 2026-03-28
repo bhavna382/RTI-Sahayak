@@ -24,7 +24,7 @@ def embed_query(query: str):
     )
     return np.array(response.embeddings[0].values)
 
-def semantic_search(query: str, top_k=3, threshold=0.6):
+def semantic_search(query: str, top_k=3, threshold=0.75):
     query_embedding = embed_query(query).reshape(1, -1)
 
     results = []

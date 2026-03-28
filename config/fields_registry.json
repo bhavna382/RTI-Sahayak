@@ -422,5 +422,127 @@
       "message": "Roll number should contain only letters, numbers, hyphens, and slashes"
     },
     "description": "Roll number of the candidate"
+  },
+
+  "govt_office_name": {
+    "label": "Government Office Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the government office where complaint was filed"
+  },
+
+  "complaint_date": {
+    "label": "Date of Complaint",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date on which the complaint/grievance was filed"
+  },
+
+  "complaint_number": {
+    "label": "Complaint Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Complaint number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "Reference/Registration number of the complaint"
+  },
+
+  "complaint_subject": {
+    "label": "Subject of Complaint",
+    "type": "textarea",
+    "source": "user",
+    "required": true,
+    "description": "Subject/Description of the complaint filed"
+  },
+
+  "accounts_officer_name": {
+    "label": "Accounts Officer Name",
+    "type": "text",
+    "source": "user",
+    "required": false,
+    "description": "Name of the Accounts Officer for RTI fee payment"
+  },
+
+  "payable_location": {
+    "label": "Payable Location",
+    "type": "text",
+    "source": "user",
+    "required": false,
+    "description": "Location where the RTI fee IPO is payable"
+  },
+
+  "lpg_distributor_name": {
+    "label": "LPG Distributor / Agency Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of the LPG distributor or agency (Indane/HP/BP)"
+  },
+
+  "lpg_distributor_address": {
+    "label": "LPG Distributor Address",
+    "type": "textarea",
+    "source": "user",
+    "required": true,
+    "description": "Address of the LPG distributor or agency"
+  },
+
+  "consumer_number": {
+    "label": "LPG Consumer Number",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Consumer number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "LPG consumer/connection number"
+  },
+
+  "agency_name": {
+    "label": "Agency Name",
+    "type": "text",
+    "source": "user",
+    "required": true,
+    "description": "Name of agency (Indane/HP/BP) for LPG distribution"
+  },
+
+  "booking_date": {
+    "label": "Booking Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date when LPG refill was booked"
+  },
+
+  "filing_date": {
+    "label": "RTI Filing Date",
+    "type": "date",
+    "source": "user",
+    "required": true,
+    "description": "Date on which RTI application is being filed"
+  },
+
+  "payment_reference_number": {
+    "label": "Payment Reference Number",
+    "type": "text",
+    "source": "user",
+    "required": false,
+    "validation": {
+      "min": 1,
+      "max": 50,
+      "pattern": "^[A-Za-z0-9/-]+$",
+      "message": "Reference number should contain only letters, numbers, hyphens, and slashes"
+    },
+    "description": "IPO number, Demand Draft number, or payment reference"
   }
 }

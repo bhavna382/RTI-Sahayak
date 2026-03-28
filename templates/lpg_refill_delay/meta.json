@@ -1,0 +1,74 @@
+{
+  "template_id": "lpg_refill_delay",
+  "state": "India",
+  "category": "LPG / Petroleum Services",
+  "title": "RTI Application for LPG Refill Delay",
+  "description": "RTI application to seek information regarding delay in LPG refill delivery, dealership agreements, consumption records, and delivery history from LPG distributor",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "public_authority_name": "Petroleum Corporation Name",
+    "public_authority_address": "Corporation Address",
+    "public_authority_address_pin_code": "PIN Code",
+    "lpg_distributor_name": "LPG Distributor / Agency Name",
+    "lpg_distributor_address": "LPG Distributor Address",
+    "consumer_number": "LPG Consumer Number",
+    "applicant_full_name": "Your Full Name",
+    "applicant_address": "Your Address",
+    "applicant_pin_code": "Your PIN Code",
+    "agency_name": "Agency Name (Indane/HP/BP)",
+    "booking_date": "Date of Booking",
+    "filing_date": "RTI Filing Date",
+    "accounts_officer_name": "Accounts Officer Name",
+    "payment_reference_number": "IPO Number"
+  },
+
+  "search_tags": [
+    "LPG",
+    "refill",
+    "delay",
+    "petroleum",
+    "distributor",
+    "lpg cylinder",
+    "delivery",
+    "consumer complaint"
+  ],
+
+  "departments": [
+    "LPG Division",
+    "Consumer Services",
+    "Petroleum Corporation",
+    "RTI Cell"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code",
+      "consumer_number"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "lpg_distributor_name",
+      "lpg_distributor_address",
+      "agency_name",
+      "booking_date",
+      "filing_date"
+    ],
+    "payment": [
+      "fee_mode",
+      "accounts_officer_name",
+      "payment_reference_number"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}

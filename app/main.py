@@ -11,10 +11,12 @@ import json
 import os
 from datetime import date
 from pathlib import Path
+import random
 
 CURRENT_DIR = Path(__file__).parent.resolve()  # Get absolute path
 TEMPLATES_DIR = (CURRENT_DIR.parent / "templates").resolve()
 REGISTRY_PATH = (CURRENT_DIR.parent / "config" / "fields_registry.json").resolve()
+EMBEDDINGS_PATH = (CURRENT_DIR.parent / "template_embeddings.json").resolve()
 
 # =======================
 # UTILITY FUNCTIONS 
@@ -129,18 +131,102 @@ def render_sidebar_rti_assistant():
 # SEARCH PAGE
 # =======================
 def render_search_page():
-    st.title("RTI Sahayak")
-    st.caption("Find the right RTI template for your issue")
+    # Custom CSS to match the second image (narrower, centered)
+    st.markdown("""
+    <style>
+    .header-box {
+        background: transparent;
+        padding: 35px 40px;
+        text-align: center;
+        color: white;
+        margin: -100px -100px 40px -100px;
+        padding-left: calc(40px + 100px);
+        padding-right: calc(40px + 100px);
+        border-radius: 15px;
+    }
+    .header-box h1 {
+        font-size: 3.2em;
+        margin: 0 0 15px 0;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+    .header-box p {
+        font-size: 1.1em;
+        margin: 0;
+        opacity: 0.95;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+    .search-container {
+        max-width: 800px;
+        margin: 30px auto 50px auto;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    .search-input {
+        flex: 1;
+    }
+    .about-section {
+        background: rgba(30, 30, 50, 0.3);
+        padding: 35px 30px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        margin: 50px auto 40px auto;
+        max-width: 800px;
+        text-align: center;
+    }
+    .about-section h3 {
+        color: #fff;
+        margin: 0 0 12px 0;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    .about-section p {
+        color: rgba(255,255,255,0.75);
+        line-height: 1.6;
+        margin: 0;
+        font-size: 0.95em;
+    }
+    .footer {
+        text-align: center;
+        padding: 20px;
+        color: rgba(255,255,255,0.6);
+        margin-top: 60px;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+    [data-testid="textInputRootElement"] input {
+        font-size: 14px !important;
+        padding: 12px 15px !important;
+        border-radius: 6px !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-    query = st.text_input(
-        "Describe your issue",
-        placeholder="e.g. Passport police verification delay",
-        key="search_query"
-    )
+    # Centered header box (narrower)
+    st.markdown("""
+    <div class="header-box">
+        <h1>📋 RTI Sahayak</h1>
+        <p>Your Assistant for Filing Right to Information Requests</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    search_clicked = st.button("🔍 Search ", type="primary")
+    # Centered Search Section (narrower)
+    st.markdown("""<div class="search-container">""", unsafe_allow_html=True)
+    col1, col2 = st.columns([3.5, 1])
+    with col1:
+        query = st.text_input(
+            "",
+            placeholder="Describe your issue... (e.g., passport delay, pension records)",
+            key="search_query",
+            label_visibility="collapsed"
+        )
+    with col2:
+        search_clicked = st.button("🔍 Search", type="primary", use_container_width=True)
+    st.markdown("""</div>""", unsafe_allow_html=True)
 
-    # Store search results in session state to persist them
+    # Store search results in session state
     if "search_results" not in st.session_state:
         st.session_state.search_results = None
 
@@ -148,23 +234,66 @@ def render_search_page():
         if query:
             st.session_state.search_results = semantic_search(query)
         else:
-            st.warning("⚠️ Please enter a description of your issue to search.")
+            st.warning("⚠️ Please describe your issue to search.")
             st.session_state.search_results = None
 
     # Display results if they exist
     if st.session_state.search_results is not None:
         if not st.session_state.search_results:
-            st.warning("No matching template found.")
+            st.warning("❌ We don't have a template for that topic yet.")
+            
+            # Load available templates for suggestion
+            with open(EMBEDDINGS_PATH, "r") as f:
+                all_templates = json.load(f)
+            
+            # Show one random example
+            if all_templates:
+                example = random.choice(all_templates)
+                st.info(f"💡 **Try this instead:** {example['title']}")
+                if st.button(f"Use: {example['title']}", key=f"fallback_{example['template_id']}", use_container_width=True):
+                    st.session_state.selected_template = example['template_id']
+                    st.session_state.search_results = None
+                    st.rerun()
         else:
-            st.subheader("Suggested Templates")
+            st.markdown("<h4 style='text-align: center; margin: 30px 0 20px;'>Suggested Templates</h4>", unsafe_allow_html=True)
             for r in st.session_state.search_results:
                 if st.button(
-                    f"{r['title']} (score: {round(r['score'], 2)})",
-                    key=r["template_id"]
+                    f"📄 {r['title']} ({int(r['score']*100)}% match)",
+                    key=r["template_id"],
+                    use_container_width=True
                 ):
                     st.session_state.selected_template = r["template_id"]
-                    st.session_state.search_results = None  # Clear results
+                    st.session_state.search_results = None
                     st.rerun()
+
+    # About Section
+    st.markdown("""
+    <div class="about-section">
+        <h3>About This Project</h3>
+        <p>RTI Sahayak helps you convert simple, natural language queries into complete RTI applications.
+           Using AI-driven template matching, guided forms, and built-in validation, it takes you from “I have a problem” to a ready-to-submit RTI — no legal knowledge required.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Footer
+    st.markdown("""
+    <div class="footer">
+        <p>Built by a student to make government information accessible to all citizens 💙</p>
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px;">
+            <a href="https://www.linkedin.com/in/bhavna-s-073986345/" target="_blank" style="text-decoration: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)" style="transition: fill 0.3s;">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/bhavna382" target="_blank" style="text-decoration: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,0.7)" style="transition: fill 0.3s;">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # =======================
 # FORM PAGE

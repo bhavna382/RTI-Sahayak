@@ -1,0 +1,65 @@
+{
+  "template_id": "complaint_status",
+  "state": "India",
+  "category": "Complaint / Grievance Status",
+  "title": "Complaint Status under RTI Act",
+  "description": "Request information regarding status of a complaint filed with government office, including copies of notes, investigation reports, and actions taken",
+
+  "priority": "normal",
+
+  "field_labels": {
+    "public_authority_name": "Public Authority Name",
+    "public_authority_address": "Public Authority Address",
+    "public_authority_address_pin_code": "Public Authority PIN Code",
+    "govt_office_name": "Government Office Name",
+    "complaint_date": "Date of Complaint",
+    "complaint_number": "Complaint Number",
+    "complaint_subject": "Subject of Complaint",
+    "accounts_officer_name": "Accounts Officer Name",
+    "payable_location": "Payable Location",
+    "applicant_full_name": "Your Full Name",
+    "applicant_address": "Your Address"
+  },
+
+  "search_tags": [
+    "complaint",
+    "status",
+    "grievance",
+    "RTI",
+    "investigation",
+    "follow-up",
+    "complaint tracking"
+  ],
+
+  "departments": [
+    "Grievance Redressal Cell",
+    "Complaint Division",
+    "RTI Cell"
+  ],
+
+  "required_fields": {
+    "user_specific": [
+      "applicant_full_name",
+      "applicant_address",
+      "applicant_pin_code"
+    ],
+    "authority_specific": [
+      "public_authority_name",
+      "public_authority_address",
+      "public_authority_address_pin_code"
+    ],
+    "case_specific": [
+      "govt_office_name",
+      "complaint_date",
+      "complaint_number",
+      "complaint_subject"
+    ],
+    "payment": [
+      "fee_mode"
+    ]
+  },
+
+  "auto_generated": [
+    "submission_date"
+  ]
+}
